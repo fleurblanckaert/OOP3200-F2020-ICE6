@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include <vector>
-
+#include <map>
 #include "GameObject.h"
 #include "Vector3D.h"
 
@@ -53,26 +53,28 @@ static void CompareGameObjects(GameObject* object1, GameObject* object2)
 
 int main()
 {
-	std::vector<GameObject*> gameObjects;
-
-	int num_of_GO;
-	std::cout << "How Many Game Objects do you need?: ";
-	std::cin >> num_of_GO;
-	std::cout << "\n--------------------------------------------------------------" << std::endl;
-
-	BuildGameObjects(gameObjects, num_of_GO);
+	std::map<std::string, GameObject> gameObjects;
 	
-	
-	int index1;
-	std::cout << "What is the First Object index?: ";
-	std::cin >> index1;
-	std::cout << "\n--------------------------------------------------------------" << std::endl;
-	int index2;
-	std::cout << "What is the Second Object index?: ";
-	std::cin >> index2;
-	std::cout << "\n--------------------------------------------------------------" << std::endl;
-	
-	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
-	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
-}
+//	std::vector<GameObject*> gameObjects;
+//
+//	int num_of_GO;
+//	std::cout << "How Many Game Objects do you need?: ";
+//	std::cin >> num_of_GO;
+//	std::cout << "\n--------------------------------------------------------------" << std::endl;
+//
+//	BuildGameObjects(gameObjects, num_of_GO);
+//	
+//	
+//	int index1;
+//	std::cout << "What is the First Object index?: ";
+//	std::cin >> index1;
+//	std::cout << "\n--------------------------------------------------------------" << std::endl;
+//	int index2;
+//	std::cout << "What is the Second Object index?: ";
+//	std::cin >> index2;
+//	std::cout << "\n--------------------------------------------------------------" << std::endl;
+//	
+//	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
+//	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
+//}
 
