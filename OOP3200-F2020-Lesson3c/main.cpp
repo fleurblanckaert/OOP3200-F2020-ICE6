@@ -86,37 +86,40 @@ int main()
 	outfile << gameObjects["Ship"]->ToFile() << std::endl;
 	outfile << gameObjects["Enemy"]->ToFile() << std::endl;
 	outfile.close();
-	std::ifstream infile("GameObject.txt", std::ios::in);
+	std::ifstream infile;
+	std::string fileName = "GameObject.txt";
 
-	
-	GameObject* tempGameObject = new GameObject();
-		while(!infile >> tempGameObject)
+	infile.open(fileName.c_str());
+
+	if (infile.is_open())
+	{
+		int id;
+		float x, y;
+		std::string name;
+
+		while (!infile.fail())
 		{
-			int id;
-			float  x, y = 0;
-			std::string name;
-			Vector2D<float> position;
-			
 			infile >> id >> name;
-			infile.ignore();
+			infile.ignore(1, ' ');
+			infile.ignore(1, '(');
 			infile >> x;
-			infile.ignore();
+			infile.ignore(1, ',');
+			infile.ignore(1, ' ');
 			infile >> y;
-			infile.ignore();
+			infile.ignore(1, ')');
 
-			auto* tempObject = new GameObject(name, id, x, y);
+			auto* temp_object = new GameObject(name, id, x, y);
 
-			gameObjects[name + " 2"] = tempObject;
-			
-			
+			gameObjects[name + " 2"] = temp_object;
 		}
 		infile.close();
+	}
 		for (auto game_object : gameObjects)
 		{
-			std::cout << "Key   : " << game_object.first << std::endl;
-			std::cout << "Value : " << std::endl;
-			std::cout << "------------------------------------" << std::endl;
-			std::cout << game_object.second->ToString() << std::endl;
+		std::cout << "Key   : " << game_object.first << std::endl;
+		std::cout << "Value : " << std::endl;
+		std::cout << "------------------------------------" << std::endl;
+		std::cout << game_object.second->ToString() << std::endl;
 
 		}
 	
